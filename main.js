@@ -8,15 +8,23 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    }
+    /*webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true
+    },*/
+    show:false,
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.setMenu(null)
+
+  mainWindow.loadURL('https://m.youtube.com',{userAgent:"Mozilla/5.0 (Linux; Android 6.0; LG ELECTRONICS LG-X230 Build/NMF26F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36 AlohaBrowser/2.1.0.0"})
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
